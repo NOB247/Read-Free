@@ -259,3 +259,16 @@ footer {
 .privacy {
     margin-left: 2cm ;
 }
+
+.star {
+  font-size: 30px;
+  color: gray;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star:hover,
+.star.hovered,
+.star.selected {
+  color: gold;
+}
