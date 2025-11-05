@@ -267,7 +267,7 @@ footer {
   transition: color 0.2s;
 }
 
-.star:hover,
+.star:active,
 .star.hovered,
 .star.selected {
   color: gold;
