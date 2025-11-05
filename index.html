@@ -22,8 +22,16 @@
                   <form class="buyFormContact" action="https://formspree.io/f/xblzzevn"
                     method="POST"
                     >
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" placeholder="example@gmail.com" required><br><br>
+                    <label for="Rate">Rate us:</label>
+                  <div class="star-rating">
+  <span class="star" data-value="5">★</span>
+  <span class="star" data-value="4">★</span>
+  <span class="star" data-value="3">★</span>
+  <span class="star" data-value="2">★</span>
+  <span class="star" data-value="1">★</span>
+</div>
+
+<p id="rating-result"></p>
                     <label for="WhatsApp">Phone:</label>
                     <input type="Phone" id="Number" name="Phone" placeholder="optional"><br><br>
                     <label for="Message">What's on my mind:</label><br>
@@ -53,6 +61,42 @@
           <br>
         </section>
     </footer>
+    <script>
+    const stars = document.querySelectorAll('.star');
+const result = document.getElementById('rating-result');
+let rating = 0;
+
+stars.forEach(star => {
+  // When user hovers
+  star.addEventListener('mouseover', () => {
+    resetStars();
+    star.classList.add('hovered');
+    highlightStars(star.dataset.value);
+  });
+
+  // When user clicks
+  star.addEventListener('click', () => {
+    rating = star.dataset.value;
+    resetStars();
+    highlightStars(rating);
+    result.textContent = `You rated this ${rating} stars!`;
+  });
+
+  // When user leaves
+  star.addEventListener('mouseleave', resetStars);
+});
+
+function highlightStars(value) {
+  stars.forEach(s => {
+    if (s.dataset.value <= value) s.classList.add('selected');
+  });
+}
+
+function resetStars() {
+  stars.forEach(s => s.classList.remove('hovered', 'selected'));
+  if (rating > 0) highlightStars(rating);
+}
+</script>
 
 </body>
 
